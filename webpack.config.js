@@ -25,6 +25,17 @@ module.exports = {
           // other vue-loader options go here
         }
       },
+      //添加对less和ttf的支持
+        {
+            test: /\.less$/,
+            loader: "style-loader!css-loader!less-loader",
+        },
+        {
+            test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+            loader: 'file-loader'
+        },
+
+
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -53,7 +64,16 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+    externals:{
+        'vue': 'Vue',
+        'vuex': 'Vuex',
+        'jquery': 'jQuery',
+        'lodash': '_',
+        'vue-router': 'VueRouter',
+        'element-ui':'ELEMENT',
+        'viser-vue':'ViserVue',
+    },
 }
 
 if (process.env.NODE_ENV === 'production') {
